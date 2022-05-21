@@ -53,8 +53,8 @@ The APIs return the same 4 characters before the JSON data `)]}'`. This can be c
 | Base -> duemilis | `[1][0]` |
 | Base -> name | `[0][5]` |
 | Base -> description | `[0][22][1]` |
-| Base -> submissionState | `[20]` |
-| Base -> submissionmilis | `[21]` |
+
+
 
 Direct link to page is generated using base64 encoded values for classid and workid:
 ``` python
@@ -62,6 +62,14 @@ f"https://classroom.google.com/u/{ch_id}/c/{urlsafe_b64encode(self.classid.encod
 ```
 
 #### Getting state of submission
+
+Post to `"https://classroom.google.com/u/{ch_id}/v8/querysubmission?_reqid={req_id}&rt=j`, adding classids and workids to the list in the data template.
+
+| Data point | Index (python format) |
+| - | - |
+| Base -> submissionState | `[20]` |
+| Base -> submissionmilis | `[21]` |
+
 `submissionState` is an enum:
 | Value | Text |
 | - | - |
